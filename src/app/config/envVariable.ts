@@ -5,13 +5,24 @@ dotenv.config();
 interface IEnvVars {
     NODE_DEV: "development" | "production",
     MONGO_CONNECT_URL: string,
-    PORT: string
+    PORT: string,
+    JWT_ACCESS_SECRET: string,
+    JWT_REFRESH_SECRET: string,
+    JWT_ACCESS_EXPIRES: string,
+    JWT_REFRESH_EXPIRED: string,
+    BCRYPT_SALT_ROUND: string,
 };
 
 
 const requiredEnvironmentVariables = (): IEnvVars => {
 
-    const requiredVar: string[] = ["NODE_DEV", "MONGO_CONNECT_URL", "PORT"];
+    const requiredVar: string[] = ["NODE_DEV", "MONGO_CONNECT_URL", "PORT",
+        "JWT_ACCESS_SECRET",
+        "JWT_REFRESH_SECRET",
+        "JWT_ACCESS_EXPIRES",
+        "JWT_REFRESH_EXPIRED",
+        "BCRYPT_SALT_ROUND",
+    ];
 
     requiredVar.forEach((key) => {
         if (!process.env[key]) {
@@ -23,6 +34,11 @@ const requiredEnvironmentVariables = (): IEnvVars => {
         NODE_DEV: process.env.NODE_DEV as "development" | "production",
         MONGO_CONNECT_URL: process.env.MONGO_CONNECT_URL as string,
         PORT: process.env.PORT as string,
+        JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET as string,
+        JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET as string,
+        JWT_ACCESS_EXPIRES: process.env.JWT_ACCESS_EXPIRES as string,
+        JWT_REFRESH_EXPIRED: process.env.JWT_REFRESH_EXPIRED as string,
+        BCRYPT_SALT_ROUND: process.env.BCRYPT_SALT_ROUND as string,
     };
 };
 
