@@ -2,7 +2,7 @@
 import { NextFunction, Request, Response } from "express"
 import AppError from "../errorHelpers/AppError";
 import { envVariable } from "../config/envVariable";
-import { TErrorSources } from "../intefaces/error.types";
+import { TErrorSources } from "../interfaces/error.types";
 import { handlerDuplicateError } from "../errorHelpers/handleDuplicateError";
 import { handlerCastError } from "../errorHelpers/handleCastError";
 import { handleValidationError } from "../errorHelpers/handleValidationError";
