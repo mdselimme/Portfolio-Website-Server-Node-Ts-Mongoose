@@ -8,18 +8,22 @@ import { UserService } from './user.service';
 
 
 
-// Create An User 
-const createAnUser = catchAsync(async (req: Request, res: Response) => {
 
+// Create An User 
+const updateUserData = catchAsync(async (req: Request, res: Response) => {
+
+    const decodedToken = req.user;
+
+    const result = await UserService.updateUserData(req.body, decodedToken);
 
     sendResponse(res, {
         success: true,
-        message: "User Created Successfully.",
+        message: "User Updated Successfully.",
         data: result,
-        statusCode: httpStatusCodes.CREATED
+        statusCode: httpStatusCodes.OK
     });
 });
 
 export const userController = {
-    createAnUser
+    updateUserData
 };

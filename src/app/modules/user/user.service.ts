@@ -2,34 +2,23 @@ import AppError from "../../errorHelpers/AppError";
 import { IUser } from "./user.interface";
 import { User } from "./user.model";
 import httpStatusCodes from 'http-status-codes';
-import bcrypt from "bcrypt";
-import { envVariable } from "../../config/envVariable";
+import { JwtPayload } from "jsonwebtoken";
 
 // // Create An User 
-// const createAnUser = async (payload: Partial<IUser>) => {
+const updateUserData = async (payload: Partial<IUser>, decodedToken: JwtPayload) => {
 
-//     const { email, password } = payload;
+    const isUserExist = await User.findById(decodedToken?.userId);
 
-//     const isUserExist = await User.findOne({ email });
+    if (!isUserExist) {
+        throw new AppError(httpStatusCodes.BAD_REQUEST, "User does not exist.");
+    }
 
-//     if (isUserExist) {
-//         throw new AppError(httpStatusCodes.BAD_REQUEST, "Email already exist.");
-//     }
+    const result = await User.findByIdAndUpdate(decodedToken.userId, payload, { new: true, runValidators: true }).select("-password");
 
-//     const hashedPassword = await bcrypt.hash(password as string, Number(envVariable.BCRYPT_SALT_ROUND));
+    return result;
 
-//     const userData = {
-//         ...payload,
-//         email,
-//         password: hashedPassword
-//     };
-
-//     const result = await User.create(userData);
-
-//     return result;
-
-// };
+};
 
 export const UserService = {
-    // createAnUser
+    updateUserData
 }

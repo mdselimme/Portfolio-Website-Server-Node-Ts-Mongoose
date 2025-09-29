@@ -1,4 +1,4 @@
-import { NextFunction, Request } from "express";
+import { NextFunction, Request, Response } from "express";
 import AppError from "../errorHelpers/AppError";
 import { envVariable } from "../config/envVariable";
 import { User } from "../modules/user/user.model";
@@ -6,7 +6,7 @@ import { JwtPayload } from "jsonwebtoken";
 import httpStatusCodes from "http-status-codes";
 import { verifyJwtToken } from "../utils/jwtTokenGenerate";
 
-export const checkAuthenticationUser = (...authRoles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
+export const checkAuth = (...authRoles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
     try {
         const accessToken = req.headers.authorization || req.cookies.accessToken;
         // if access token not found 
