@@ -4,6 +4,7 @@ import { Server } from "http";
 import mongoose from "mongoose";
 import app from "./app";
 import { envVariable } from "./app/config/envVariable";
+import { seedCreateAdminUser } from "./app/utils/seedCreateAdminUser";
 
 
 
@@ -27,6 +28,7 @@ const startServer = async () => {
 
 (async () => {
     await startServer();
+    await seedCreateAdminUser();
 })()
 
 // server shutdown function 

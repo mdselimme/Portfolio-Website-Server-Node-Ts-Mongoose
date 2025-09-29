@@ -8,8 +8,8 @@ const userSchemaModel = new Schema<IUser>({
     email: { type: String, unique: [true, "Email already taken. Email must be unique."], trim: true, required: [true, "Email is required."] },
     password: { type: String, required: true, minlength: [5, "min 8 character long."] },
     photo: { type: String, trim: true },
-    role: { type: String, default: "ADMIN" },
-    isActive: { type: String, default: "ACTIVES" },
+    role: { type: String, enum: ["ADMIN"], default: "ADMIN" },
+    isActive: { type: String, enum: ["ACTIVE"], default: "ACTIVE" },
     isVerified: { type: Boolean, default: true },
     phone: {
         type: String,
