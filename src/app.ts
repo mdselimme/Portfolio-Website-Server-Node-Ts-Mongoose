@@ -5,6 +5,7 @@ import { router } from "./app/router";
 import { globalErrorHandler } from "./app/middleware/globalErrorHandlers";
 import notFoundRoute from "./app/middleware/notFound";
 const app = express();
+app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
