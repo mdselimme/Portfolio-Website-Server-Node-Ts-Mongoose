@@ -9,6 +9,7 @@ import { envVariable } from '../config/envVariable';
 export const seedCreateAdminUser = async () => {
 
     try {
+        const name = envVariable.USER_NAME;
         const email = envVariable.USER_EMAIL;
         const phone = envVariable.USER_PHONE;
         const password = envVariable.USER_PASSWORD;
@@ -23,6 +24,7 @@ export const seedCreateAdminUser = async () => {
         const hashedPassword = await bcrypt.hash(password as string, Number(envVariable.BCRYPT_SALT_ROUND));
 
         const userData = {
+            name,
             email,
             password: hashedPassword,
             phone

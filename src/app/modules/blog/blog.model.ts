@@ -11,7 +11,8 @@ const blogSchemaModel = new Schema<IBlog>({
     },
     author: {
         required: true,
-        type: Schema.ObjectId,
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
     description: {
         required: true,
@@ -23,7 +24,18 @@ const blogSchemaModel = new Schema<IBlog>({
     tags: {
         type: [String],
         required: true
+    },
+    isFeatured: {
+        type: Boolean,
+        default: false
+    },
+    views: {
+        type: Number,
+        default: 0
     }
+}, {
+    versionKey: false,
+    timestamps: true
 });
 
 export const Blog = model<IBlog>("Blogs", blogSchemaModel);

@@ -7,6 +7,8 @@ export interface IBlog {
     title: string,
     author: Types.ObjectId,
     description: string,
-    thumbnail: string,
+    thumbnail?: string,
     tags: string[],
+    views: number,
+    isFeatured: boolean
 }
