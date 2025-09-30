@@ -21,6 +21,22 @@ const createABlog = catchAsync(async (req: Request, res: Response) => {
 
 });
 
+// Update A Blog 
+const updateABlog = catchAsync(async (req: Request, res: Response) => {
+
+
+    const result = await BlogServices.updateABlog(req.body, req.params.id);
+
+    sendResponse(res, {
+        success: true,
+        message: "Blog Updated Successfully.",
+        data: result,
+        statusCode: httpStatusCodes.CREATED
+    });
+
+});
+
+
 // get All Blog
 const getAllBlogs = catchAsync(async (req: Request, res: Response) => {
 
@@ -50,6 +66,23 @@ const getABlog = catchAsync(async (req: Request, res: Response) => {
 });
 
 
+// get A Single Blog
+const deleteABlog = catchAsync(async (req: Request, res: Response) => {
+
+    await BlogServices.deleteABlog(req.params.id);
+
+    sendResponse(res, {
+        success: true,
+        message: "Blog deleted Successfully.",
+        data: null,
+        statusCode: httpStatusCodes.OK
+    });
+
+});
+
+
+
+
 
 
 
@@ -57,5 +90,7 @@ const getABlog = catchAsync(async (req: Request, res: Response) => {
 export const BlogsController = {
     createABlog,
     getAllBlogs,
-    getABlog
+    getABlog,
+    updateABlog,
+    deleteABlog
 };

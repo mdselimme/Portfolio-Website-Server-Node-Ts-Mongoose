@@ -24,6 +24,15 @@ const createABlog = async (payload: Partial<IBlog>, decodedToken: JwtPayload) =>
     return result;
 };
 
+// Update A Blog 
+const updateABlog = async (payload: Partial<IBlog>, id: string) => {
+
+
+    const result = await Blog.findByIdAndUpdate(id, payload, { runValidators: true, new: true });
+
+    return result;
+};
+
 // get All Blog
 const getAllBlogs = async () => {
 
@@ -43,10 +52,21 @@ const getABlog = async (id: string) => {
 
 };
 
+// get A Single Blog
+const deleteABlog = async (id: string) => {
+
+    const result = await Blog.findByIdAndDelete(id);
+
+    return result;
+
+};
+
 
 
 export const BlogServices = {
     createABlog,
     getAllBlogs,
-    getABlog
+    getABlog,
+    updateABlog,
+    deleteABlog
 };
