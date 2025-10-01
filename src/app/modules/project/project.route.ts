@@ -2,13 +2,14 @@ import { Router } from "express";
 import { checkAuth } from "../../middleware/checkUserAuth";
 import { validateSchemaRequest } from "../../middleware/validateSchemaRequest";
 import { ProjectController } from "./project.controller";
+import { projectZodSchema, updateProjectZodSchema } from "./project.validate";
 
 const router = Router();
 
 // create blog
 router.post(
   "/",
-  validateSchemaRequest(),
+  validateSchemaRequest(projectZodSchema),
   checkAuth("ADMIN"),
   ProjectController.createAProject
 );
@@ -22,7 +23,7 @@ router.get("/:id", ProjectController.getAProject);
 // update blog
 router.patch(
   "/:id",
-  validateSchemaRequest(),
+  validateSchemaRequest(updateProjectZodSchema),
   checkAuth("ADMIN"),
   ProjectController.updateAProject
 );
