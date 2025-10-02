@@ -3,13 +3,14 @@ import { JwtPayload } from "jsonwebtoken";
 import { IProject } from "./project.interface";
 import { Project } from "./project.model";
 import AppError from "../../errorHelpers/AppError";
+import { User } from "../user/user.model";
 
 // Create A Project
 const createAProject = async (
   payload: Partial<IProject>,
   decodedToken: JwtPayload
 ) => {
-  const user = await Project.findById(decodedToken?.userId);
+  const user = await User.findById(decodedToken?.userId);
 
   if (!user) {
     throw new AppError(

@@ -6,7 +6,7 @@ import { projectZodSchema, updateProjectZodSchema } from "./project.validate";
 
 const router = Router();
 
-// create blog
+// create project
 router.post(
   "/",
   validateSchemaRequest(projectZodSchema),
@@ -14,13 +14,13 @@ router.post(
   ProjectController.createAProject
 );
 
-// get all blog
+// get all project
 router.get("/", ProjectController.getAllProject);
 
-// get a blog
+// get a project
 router.get("/:id", ProjectController.getAProject);
 
-// update blog
+// update project
 router.patch(
   "/:id",
   validateSchemaRequest(updateProjectZodSchema),
@@ -28,7 +28,7 @@ router.patch(
   ProjectController.updateAProject
 );
 
-// delete blog
+// delete project
 router.delete("/:id", checkAuth("ADMIN"), ProjectController.deleteAProject);
 
 export const ProjectRouter = router;
