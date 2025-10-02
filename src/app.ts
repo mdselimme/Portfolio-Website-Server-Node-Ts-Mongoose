@@ -6,26 +6,29 @@ import { globalErrorHandler } from "./app/middleware/globalErrorHandlers";
 import notFoundRoute from "./app/middleware/notFound";
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
-// root app 
+// root app
 app.get("/", (req: Request, res: Response) => {
-    res.json({
-        message: "Next Js Portfolio Server Running.",
-        version: "1.01"
-    })
+  res.json({
+    message: "Next Js Portfolio Server Running.",
+    version: "1.01",
+  });
 });
 
-// router 
+// router
 app.use("/api/v1", router);
 
 // global error handler
 app.use(globalErrorHandler);
 
-// Not found route 
+// Not found route
 app.use(notFoundRoute);
-
-
 
 export default app;
