@@ -36,7 +36,7 @@ const updateABlog = async (payload: Partial<IBlog>, id: string) => {
 // get All Blog
 const getAllBlogs = async () => {
 
-    const result = await Blog.find({});
+    const result = await Blog.find({}).populate("author", "name email phone photo");
 
     return result;
 
@@ -44,11 +44,24 @@ const getAllBlogs = async () => {
 
 // get A Single Blog
 const getABlog = async (id: string) => {
+    const session = await Blog.startSession();
+    session.startTransaction();
+    try {
 
-    const result = await Blog.findById(id)
-        .populate("author", "name email phone");
+        const blog = await Blog.findById(id);
 
-    return result;
+        const updateViews = { views: Number(blog?.views) + 1 };
+
+        const findByIdAndUpdateViews = await Blog.findByIdAndUpdate(id, updateViews, { session, runValidators: true, new: true }).populate("author", "name email phone photo")
+        await session.commitTransaction();
+        session.endSession();
+        return findByIdAndUpdateViews;
+    } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
+        throw error;
+    }
+
 
 };
 
