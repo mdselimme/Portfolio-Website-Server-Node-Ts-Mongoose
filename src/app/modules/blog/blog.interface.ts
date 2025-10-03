@@ -10,5 +10,6 @@ export interface IBlog {
     thumbnail?: string,
     tags: string[],
     views: number,
-    isFeatured: boolean
+    isFeatured: boolean,
+    createdAt: Date
 }

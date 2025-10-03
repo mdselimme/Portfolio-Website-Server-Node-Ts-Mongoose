@@ -36,7 +36,9 @@ const updateABlog = async (payload: Partial<IBlog>, id: string) => {
 // get All Blog
 const getAllBlogs = async () => {
 
-    const result = await Blog.find({}).populate("author", "name email phone photo");
+    const result = (await Blog.find({})
+        .sort({ createdAt: -1 })
+        .populate("author", "name email phone photo"))
 
     return result;
 
