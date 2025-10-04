@@ -40,7 +40,10 @@ const updateAProject = async (payload: Partial<IProject>, id: string) => {
 
 // get All Project
 const getAllProject = async () => {
-  const result = await Project.find({});
+  const result = await Project.find({}).populate(
+    "user",
+    "name photo"
+  );
 
   return result;
 };
@@ -49,7 +52,7 @@ const getAllProject = async () => {
 const getAProject = async (id: string) => {
   const result = await Project.findById(id).populate(
     "user",
-    "name email phone"
+    "name photo"
   );
 
   return result;
