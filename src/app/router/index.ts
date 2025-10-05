@@ -3,6 +3,7 @@ import { UserRouter } from "../modules/user/user.route";
 import { AuthRouter } from "../modules/auth/auth.route";
 import { BlogsRouter } from "../modules/blog/blog.route";
 import { ProjectRouter } from "../modules/project/project.route";
+import { StatsRouter } from "../modules/stats/stats.route";
 
 export const router = Router();
 
@@ -22,6 +23,10 @@ const routes = [
   {
     path: "/project",
     route: ProjectRouter,
+  },
+  {
+    path: "/stats",
+    route: StatsRouter,
   },
 ];
 
