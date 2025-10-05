@@ -6,6 +6,7 @@ import { JwtPayload } from "jsonwebtoken";
 import httpStatusCodes from "http-status-codes";
 import { verifyJwtToken } from "../utils/jwtTokenGenerate";
 
+
 export const checkAuth = (...authRoles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
     try {
         const accessToken = req.headers.authorization || req.cookies.accessToken;
@@ -15,6 +16,7 @@ export const checkAuth = (...authRoles: string[]) => async (req: Request, res: R
         }
         // verify access token 
         const verifiedToken = verifyJwtToken(accessToken, envVariable.JWT_ACCESS_SECRET) as JwtPayload;
+
         // user find by email 
         const isUserExist = await User.findOne({ email: verifiedToken.email });
         // If user not found 

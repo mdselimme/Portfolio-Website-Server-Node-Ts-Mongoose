@@ -19,6 +19,21 @@ const updateUserData = async (payload: Partial<IUser>, decodedToken: JwtPayload)
 
 };
 
+// Get Me User
+const getMeUser = async (userId: string) => {
+
+    const user = await User.findById(userId)
+        .select("-password");
+
+    if (!user) {
+        throw new AppError(httpStatusCodes.BAD_REQUEST, "User not found.");
+    }
+
+    return user;
+};
+
+
 export const UserService = {
-    updateUserData
+    updateUserData,
+    getMeUser
 }

@@ -9,6 +9,14 @@ const router = Router();
 router.patch("/",
     checkAuth("ADMIN"),
     validateSchemaRequest(updateUserZodSchema),
-    userController.updateUserData)
+    userController.updateUserData);
+
+
+// Get All Users 
+router.get("/me",
+    checkAuth("ADMIN"),
+    userController.getMeUser
+)
+
 
 export const UserRouter = router;

@@ -15,6 +15,7 @@ interface IEnvVars {
     USER_EMAIL: string,
     USER_PASSWORD: string,
     USER_PHONE: string,
+    NEXT_AUTH_SECRET: string,
 };
 
 
@@ -30,6 +31,7 @@ const requiredEnvironmentVariables = (): IEnvVars => {
         "USER_EMAIL",
         "USER_PASSWORD",
         "USER_PHONE",
+        "NEXT_AUTH_SECRET",
     ];
 
     requiredVar.forEach((key) => {
@@ -42,6 +44,7 @@ const requiredEnvironmentVariables = (): IEnvVars => {
         NODE_DEV: process.env.NODE_DEV as "development" | "production",
         MONGO_CONNECT_URL: process.env.MONGO_CONNECT_URL as string,
         PORT: process.env.PORT as string,
+        NEXT_AUTH_SECRET: process.env.USER_PHONE as string,
         JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET as string,
         JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET as string,
         JWT_ACCESS_EXPIRES: process.env.JWT_ACCESS_EXPIRES as string,

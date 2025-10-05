@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
 import { UserService } from './user.service';
+import { JwtPayload } from 'jsonwebtoken';
 
 
 
@@ -24,6 +25,25 @@ const updateUserData = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
+
+
+// Get Me Users 
+const getMeUser = catchAsync(async (req: Request, res: Response) => {
+
+    const decodedToken = req.user as JwtPayload;
+
+    const result = await UserService.getMeUser(decodedToken.userId);
+
+    sendResponse(res, {
+        success: true,
+        message: "My profile retrieved Successfully.",
+        data: result,
+        statusCode: httpStatusCodes.OK
+    });
+});
+
+
 export const userController = {
-    updateUserData
+    updateUserData,
+    getMeUser
 };
