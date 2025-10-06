@@ -40,10 +40,12 @@ const updateAProject = async (payload: Partial<IProject>, id: string) => {
 
 // get All Project
 const getAllProject = async () => {
-  const result = await Project.find({}).populate(
-    "user",
-    "name photo"
-  );
+  const result = await Project.find({})
+    .sort({ createdAt: "desc" })
+    .populate(
+      "user",
+      "name photo"
+    );
 
   return result;
 };
