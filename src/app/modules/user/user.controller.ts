@@ -25,8 +25,6 @@ const updateUserData = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
-
-
 // Get Me Users 
 const getMeUser = catchAsync(async (req: Request, res: Response) => {
 
@@ -45,5 +43,5 @@ const getMeUser = catchAsync(async (req: Request, res: Response) => {
 
 export const userController = {
     updateUserData,
-    getMeUser
+    getMeUser,
 };

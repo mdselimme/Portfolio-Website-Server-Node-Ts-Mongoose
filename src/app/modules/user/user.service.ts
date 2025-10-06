@@ -35,5 +35,5 @@ const getMeUser = async (userId: string) => {
 
 export const UserService = {
     updateUserData,
-    getMeUser
+    getMeUser,
 }
