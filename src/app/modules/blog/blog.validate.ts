@@ -8,7 +8,6 @@ export const blogZodSchemaModel = z.object({
     thumbnail: z.url({ error: "thumbnail link is required." }),
     tags: z.array(z.string(), { error: "tags is a string array." }),
     isFeatured: z.boolean({ error: "isFeatured is a boolean." }),
-    views: z.number({ error: "view is a number." })
 });
 
 export const updateBlogZodSchema = z.object({

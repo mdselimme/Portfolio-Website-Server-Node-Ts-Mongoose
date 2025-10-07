@@ -10,16 +10,28 @@ export const projectZodSchema = z.object({
     error: "technology used is a string array.",
   }),
   clientLiveLink: z
-    .url({ error: "client live link is not valid link." })
+    .union([
+      z.url({ message: "client live link is not valid link." }),
+      z.literal(""),
+    ])
     .optional(),
   serverLiveLink: z
-    .url({ error: "server live link is not valid link." })
+    .union([
+      z.url({ message: "server live link is not valid link." }),
+      z.literal(""),
+    ])
     .optional(),
   clientCodeLink: z
-    .url({ error: "client code link is not valid link." })
+    .union([
+      z.url({ message: "client code link is not valid link." }),
+      z.literal(""),
+    ])
     .optional(),
   serverCodeLink: z
-    .url({ error: "server code link is not valid link." })
+    .union([
+      z.url({ message: "server code link is not valid link." }),
+      z.literal(""),
+    ])
     .optional(),
 });
 
