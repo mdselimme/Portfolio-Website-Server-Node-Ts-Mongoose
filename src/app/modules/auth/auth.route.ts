@@ -15,7 +15,7 @@ router.post("/login",
 );
 
 // Reset User Password 
-router.post("/reset-password",
+router.patch("/reset-password",
     validateSchemaRequest(resetPassZodSchema),
     checkAuth("ADMIN"),
     AuthController.resetUserPassword

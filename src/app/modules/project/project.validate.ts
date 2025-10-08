@@ -9,29 +9,13 @@ export const projectZodSchema = z.object({
   technologyUsed: z.array(z.string(), {
     error: "technology used is a string array.",
   }),
-  clientLiveLink: z
-    .union([
-      z.url({ message: "client live link is not valid link." }),
-      z.literal(""),
-    ])
+  clientLiveLink: z.url({ message: "client live link is not valid link." })
     .optional(),
-  serverLiveLink: z
-    .union([
-      z.url({ message: "server live link is not valid link." }),
-      z.literal(""),
-    ])
+  serverLiveLink: z.url({ message: "server live link is not valid link." })
     .optional(),
-  clientCodeLink: z
-    .union([
-      z.url({ message: "client code link is not valid link." }),
-      z.literal(""),
-    ])
+  clientCodeLink: z.url({ message: "client code link is not valid link." })
     .optional(),
-  serverCodeLink: z
-    .union([
-      z.url({ message: "server code link is not valid link." }),
-      z.literal(""),
-    ])
+  serverCodeLink: z.url({ message: "server code link is not valid link." })
     .optional(),
 });
 
