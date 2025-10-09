@@ -257,4 +257,81 @@ credentials: include
 }
 ```
 
+---
+
+## Auth Login & Register Api Endpoints.
+
+--
+
+### 1./ User Login Endpoints:
+
+api url: http://localhost:5000/api/v1/auth/login
+
+method: `POST`
+
+**Login Schema Model**
+
+```json
+{
+     "email": string,
+     "password": string
+}
+```
+
+**Request Example Schema**
+
+```json
+{
+     "email": "example@gmail.com",
+     "password": "123456795"
+}
+```
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "User logged in Successfully.",
+    "data": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX.....",
+        "refreshToken": "eyJhbGciOiJIUz....",
+        "user": {
+            "_id": "68dc3a5a25c768a2354cc34a",
+            "name": "MD. Example",
+            "email": "example@gmail.com",
+            "role": "ADMIN",
+            "isActive": "ACTIVE",
+            "isVerified": true,
+            "phone": "01732566756",
+            "createdAt": "2025-09-30T20:15:22.450Z",
+            "updatedAt": "2025-10-09T13:33:02.642Z",
+            "photo": "https://i.ibb.co.com/Ld3HCkBP/team-6.jpg"
+        }
+    }
+}
+```
+
+--
+
+### 2./ User LogOut Endpoints:
+
+api url: http://localhost:5000/api/v1/auth/logout
+
+method: `POST`
+
+credential: true
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "User logged out Successfully.",
+    "data": null
+}
+```
+
 --
