@@ -379,3 +379,61 @@ method: `POST`
 ```
 
 ---
+
+## Blogs Api Endpoints.
+
+### 1./ User Login Endpoints:
+
+api url: http://localhost:5000/api/v1/blog
+
+method: `POST`
+
+**Blog Schema Model**
+
+```json
+{
+  "title": string,
+    "description": string,
+    "thumbnail": string,
+    "tags": [string],
+    "isFeatured": boolean
+}
+```
+
+**Request Example Schema**
+
+```json
+ {
+  "title": "Next.js SSR and SSG Explained",
+  "description": "Understanding server-side rendering and static site generation in Next.js.",
+  "thumbnail": "https://miro.medium.com/v2/1*_bJ2z2NRfTncHAv5UjUxwA.jpeg",
+  "tags": ["nextjs", "react", "ssr"],
+  "isFeatured": true
+  }
+```
+
+**Response**
+
+```json
+{
+    "statusCode": 201,
+    "success": true,
+    "message": "Blog Created Successfully.",
+    "data": {
+        "title": "Next.js SSR and SSG Explained",
+        "author": "68dc3a5a25c768a2354cc34a",
+        "description": "Understanding server-side rendering and static site generation in Next.js.",
+        "thumbnail": "https://miro.medium.com/v2/1*_bJ2z2NRfTncHAv5UjUxwA.jpeg",
+        "tags": [
+            "nextjs",
+            "react",
+            "ssr"
+        ],
+        "isFeatured": true,
+        "views": 0,
+        "_id": "68e80f8f3291cf537bac6f5e",
+        "createdAt": "2025-10-09T19:39:59.178Z",
+        "updatedAt": "2025-10-09T19:39:59.178Z"
+    }
+}
+```
