@@ -324,9 +324,9 @@ credential: true
 }
 ```
 
-### 4./ Auth Reset Password Endpoints:
+### 3./ Refresh Token Endpoints:
 
-api url: http://localhost:5000/api/v1/auth/reset-password
+api url: http://localhost:5000/api/v1/auth/refresh-token
 
 method: `POST`
 
@@ -343,18 +343,18 @@ credential: true
 }
 ```
 
-### 1./ User Login Endpoints:
+### 4./ User Login Endpoints:
 
-api url: http://localhost:5000/api/v1/auth/login
+api url: http://localhost:5000/api/v1/auth/reset-password
 
 method: `POST`
 
-**Login Schema Model**
+**Reset Password Schema Model**
 
 ```json
 {
-     "email": string,
-     "password": string
+    "oldPassword": string,
+    "newPassword": string
 }
 ```
 
@@ -377,3 +377,5 @@ method: `POST`
     "statusCode": 200
 }
 ```
+
+---
