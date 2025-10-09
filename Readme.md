@@ -138,8 +138,6 @@ server base url: `http://localhost:5000/api/v1`
 
 ## User Authentication And token documentation.
 
---
-
 ### 1./ User Register Endpoints:
 
 - Config the .env file and give properties value:
@@ -178,8 +176,6 @@ USER_PHONE=01731023545
   "updatedAt": "2025-10-09T13:23:15.636Z"
 }
 ```
-
---
 
 ### 2./ User Update Endpoints:
 
@@ -227,8 +223,6 @@ credentials: include
 }
 ```
 
---
-
 ### 3./ User Get Me Endpoints:
 
 api url: http://localhost:5000/api/v1/user/me
@@ -260,8 +254,6 @@ credentials: include
 ---
 
 ## Auth Login & Register Api Endpoints.
-
---
 
 ### 1./ User Login Endpoints:
 
@@ -313,8 +305,6 @@ method: `POST`
 }
 ```
 
---
-
 ### 2./ User LogOut Endpoints:
 
 api url: http://localhost:5000/api/v1/auth/logout
@@ -334,4 +324,56 @@ credential: true
 }
 ```
 
---
+### 4./ Auth Reset Password Endpoints:
+
+api url: http://localhost:5000/api/v1/auth/reset-password
+
+method: `POST`
+
+credential: true
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Access Token find Successfully.",
+    "data": null
+}
+```
+
+### 1./ User Login Endpoints:
+
+api url: http://localhost:5000/api/v1/auth/login
+
+method: `POST`
+
+**Login Schema Model**
+
+```json
+{
+     "email": string,
+     "password": string
+}
+```
+
+**Request Example Schema**
+
+```json
+{
+    "oldPassword": "12345654",
+    "newPassword": "89662254"
+}
+```
+
+**Response**
+
+```json
+{
+    "success": true,
+    "message": "User password reset successfully.",
+    "data": null,
+    "statusCode": 200
+}
+```
