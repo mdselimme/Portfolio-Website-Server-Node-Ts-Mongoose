@@ -75,70 +75,65 @@ pnpm dev
 Prisma-Blog/
 │── node_modules/          # Dependencies
 |-- 📦src
- ┣ 📂app
- ┃ ┣ 📂config
- ┃ ┃ ┗ 📜envVariable.ts
- ┃ ┣ 📂errorHelpers
- ┃ ┃ ┣ 📜AppError.ts
- ┃ ┃ ┣ 📜handleCastError.ts
- ┃ ┃ ┣ 📜handleDuplicateError.ts
- ┃ ┃ ┣ 📜handleValidationError.ts
- ┃ ┃ ┗ 📜handleZodError.ts
- ┃ ┣ 📂interfaces
- ┃ ┃ ┣ 📜error.types.ts
- ┃ ┃ ┗ 📜index.d.ts
- ┃ ┣ 📂middleware
- ┃ ┃ ┣ 📜checkUserAuth.ts
- ┃ ┃ ┣ 📜globalErrorHandlers.ts
- ┃ ┃ ┣ 📜notFound.ts
- ┃ ┃ ┗ 📜validateSchemaRequest.ts
- ┃ ┣ 📂modules
- ┃ ┃ ┣ 📂auth
- ┃ ┃ ┃ ┣ 📜auth.controller.ts
- ┃ ┃ ┃ ┣ 📜auth.route.ts
- ┃ ┃ ┃ ┣ 📜auth.services.ts
- ┃ ┃ ┃ ┗ 📜auth.validation.ts
- ┃ ┃ ┣ 📂blog
- ┃ ┃ ┃ ┣ 📜blog.controller.ts
- ┃ ┃ ┃ ┣ 📜blog.interface.ts
- ┃ ┃ ┃ ┣ 📜blog.model.ts
- ┃ ┃ ┃ ┣ 📜blog.route.ts
- ┃ ┃ ┃ ┣ 📜blog.service.ts
- ┃ ┃ ┃ ┗ 📜blog.validate.ts
- ┃ ┃ ┣ 📂project
- ┃ ┃ ┃ ┣ 📜project.controller.ts
- ┃ ┃ ┃ ┣ 📜project.interface.ts
- ┃ ┃ ┃ ┣ 📜project.model.ts
- ┃ ┃ ┃ ┣ 📜project.route.ts
- ┃ ┃ ┃ ┣ 📜project.service.ts
- ┃ ┃ ┃ ┗ 📜project.validate.ts
- ┃ ┃ ┣ 📂stats
- ┃ ┃ ┃ ┣ 📜stats.controller.ts
- ┃ ┃ ┃ ┣ 📜stats.route.ts
- ┃ ┃ ┃ ┗ 📜stats.service.ts
- ┃ ┃ ┗ 📂user
- ┃ ┃ ┃ ┣ 📜user.controller.ts
- ┃ ┃ ┃ ┣ 📜user.interface.ts
- ┃ ┃ ┃ ┣ 📜user.model.ts
- ┃ ┃ ┃ ┣ 📜user.route.ts
- ┃ ┃ ┃ ┣ 📜user.service.ts
- ┃ ┃ ┃ ┗ 📜user.validate.ts
- ┃ ┣ 📂router
- ┃ ┃ ┗ 📜index.ts
- ┃ ┗ 📂utils
- ┃ ┃ ┣ 📜catchAsync.ts
- ┃ ┃ ┣ 📜jwtTokenGenerate.ts
- ┃ ┃ ┣ 📜seedCreateAdminUser.ts
- ┃ ┃ ┣ 📜sendResponse.ts
- ┃ ┃ ┣ 📜setTokenInCookie.ts
- ┃ ┃ ┗ 📜userTokens.ts
- ┣ 📜app.ts
- ┗ 📜server.ts
-│── src/
-│   ├── app.ts             # Express app configuration
-│   ├── server.ts          # Server entry point
-│   ├── config/            # Environment & configuration files
-│   └── modules/           # Application modules (posts, users, etc.)
+|        ┣ 📂app
+|        ┃ ┣ 📂config       # Environment & configuration files
+|        ┃ ┃ ┗ 📜envVariable.ts
+|        ┃ ┣ 📂errorHelpers
+|        ┃ ┃ ┣ 📜AppError.ts
+|        ┃ ┃ ┣ 📜handleCastError.ts
+|        ┃ ┃ ┣ 📜handleDuplicateError.ts
+|        ┃ ┃ ┣ 📜handleValidationError.ts
+|        ┃ ┃ ┗ 📜handleZodError.ts
+|        ┃ ┣ 📂interfaces
+|        ┃ ┃ ┣ 📜error.types.ts
+|        ┃ ┃ ┗ 📜index.d.ts
+|        ┃ ┣ 📂middleware
+|        ┃ ┃ ┣ 📜checkUserAuth.ts
+|        ┃ ┃ ┣ 📜globalErrorHandlers.ts
+|        ┃ ┃ ┣ 📜notFound.ts
+|        ┃ ┃ ┗ 📜validateSchemaRequest.ts
+|        ┃ ┣ 📂modules # Application modules (posts, users, etc.)
+|        ┃ ┃ ┣ 📂auth
+|        ┃ ┃ ┃ ┣ 📜auth.controller.ts
+|        ┃ ┃ ┃ ┣ 📜auth.route.ts
+|        ┃ ┃ ┃ ┣ 📜auth.services.ts
+|        ┃ ┃ ┃ ┗ 📜auth.validation.ts
+|        ┃ ┃ ┣ 📂blog
+|        ┃ ┃ ┃ ┣ 📜blog.controller.ts
+|        ┃ ┃ ┃ ┣ 📜blog.interface.ts
+|        ┃ ┃ ┃ ┣ 📜blog.model.ts
+|        ┃ ┃ ┃ ┣ 📜blog.route.ts
+|        ┃ ┃ ┃ ┣ 📜blog.service.ts
+|        ┃ ┃ ┃ ┗ 📜blog.validate.ts
+|        ┃ ┃ ┣ 📂project
+|        ┃ ┃ ┃ ┣ 📜project.controller.ts
+|        ┃ ┃ ┃ ┣ 📜project.interface.ts
+|        ┃ ┃ ┃ ┣ 📜project.model.ts
+|        ┃ ┃ ┃ ┣ 📜project.route.ts
+|        ┃ ┃ ┃ ┣ 📜project.service.ts
+|        ┃ ┃ ┃ ┗ 📜project.validate.ts
+|        ┃ ┃ ┣ 📂stats
+|        ┃ ┃ ┃ ┣ 📜stats.controller.ts
+|        ┃ ┃ ┃ ┣ 📜stats.route.ts
+|        ┃ ┃ ┃ ┗ 📜stats.service.ts
+|        ┃ ┃ ┗ 📂user
+|        ┃ ┃ ┃ ┣ 📜user.controller.ts
+|        ┃ ┃ ┃ ┣ 📜user.interface.ts
+|        ┃ ┃ ┃ ┣ 📜user.model.ts
+|        ┃ ┃ ┃ ┣ 📜user.route.ts
+|        ┃ ┃ ┃ ┣ 📜user.service.ts
+|        ┃ ┃ ┃ ┗ 📜user.validate.ts
+|        ┃ ┣ 📂router
+|        ┃ ┃ ┗ 📜index.ts
+|        ┃ ┗ 📂utils
+|        ┃ ┃ ┣ 📜catchAsync.ts
+|        ┃ ┃ ┣ 📜jwtTokenGenerate.ts
+|        ┃ ┃ ┣ 📜seedCreateAdminUser.ts
+|        ┃ ┃ ┣ 📜sendResponse.ts
+|        ┃ ┃ ┣ 📜setTokenInCookie.ts
+|        ┃ ┃ ┗ 📜userTokens.ts
+|        ┣ 📜app.ts # Express app configuration
+|        ┗ 📜server.ts # Server entry point
 │── package.json           # Project metadata & scripts
 │── package-lock.json      # Lockfile (npm)
 │── tsconfig.json          # TypeScript configuration
