@@ -382,25 +382,25 @@ method: `POST`
 
 ## Blogs Api Endpoints.
 
-### 1./ User Login Endpoints:
+### 1./ Blog Create Endpoints:
 
 api url: http://localhost:5000/api/v1/blog
 
 method: `POST`
 
-**Blog Schema Model**
+**Blog Create Schema Model:**
 
 ```json
 {
   "title": string,
     "description": string,
-    "thumbnail": string,
+    "thumbnail": string, (valid https url)
     "tags": [string],
     "isFeatured": boolean
 }
 ```
 
-**Request Example Schema**
+**Request Example Schema:**
 
 ```json
  {
@@ -437,3 +437,133 @@ method: `POST`
     }
 }
 ```
+
+### 2./ Blog Update Endpoints:
+
+api url: http://localhost:5000/api/v1/blog/{objectId}
+
+method: `PATCH`
+
+**Blog Update Schema Model:**
+
+```json
+{
+  "title": string,
+  "description": string,
+  "thumbnail": string, (valid https url)
+  "tags": [string],
+  "isFeatured": boolean
+}
+```
+
+**Request Example Schema:**
+
+```json
+ {
+  "title": "Next.js SSR and SSG Explained",
+  "description": "Understanding server-side rendering and static site generation in Next.js.",
+  "thumbnail": "https://miro.medium.com/v2/1*_bJ2z2NRfTncHAv5UjUxwA.jpeg",
+  "tags": ["cats", "heelo", "murgin", "pen"]
+  "isFeatured": false
+  }
+```
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Blog Updated Successfully.",
+    "data": {
+        "title": "Next.js SSR and SSG Explained",
+        "author": "68dc3a5a25c768a2354cc34a",
+        "description": "Understanding server-side rendering and static site generation in Next.js.",
+        "thumbnail": "https://miro.medium.com/v2/1*_bJ2z2NRfTncHAv5UjUxwA.jpeg",
+        "tags": ["cats", "heelo", "murgin", "pen"]
+        "isFeatured": false,
+        "views": 0,
+        "_id": "68e80f8f3291cf537bac6f5e",
+        "createdAt": "2025-10-09T19:39:59.178Z",
+        "updatedAt": "2025-10-09T19:39:59.178Z"
+    }
+}
+```
+
+### 3./ Get A Blog Endpoints:
+
+api url: http://localhost:5000/api/v1/blog/{objectId}
+
+method: `GET`
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Blog retrieved Successfully.",
+    "data": {
+        "title": "Next.js SSR and SSG Explained",
+        "author": "68dc3a5a25c768a2354cc34a",
+        "description": "Understanding server-side rendering and static site generation in Next.js.",
+        "thumbnail": "https://miro.medium.com/v2/1*_bJ2z2NRfTncHAv5UjUxwA.jpeg",
+        "tags": ["cats", "heelo", "murgin", "pen"]
+        "isFeatured": false,
+        "views": 0,
+        "_id": "68e80f8f3291cf537bac6f5e",
+        "createdAt": "2025-10-09T19:39:59.178Z",
+        "updatedAt": "2025-10-09T19:39:59.178Z"
+    }
+}
+```
+
+### 4./ Get ALL Blog Endpoints:
+
+api url: http://localhost:5000/api/v1/blog
+
+method: `GET`
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Blog retrieved Successfully.",
+    "data":[
+         {
+        "title": "Next.js SSR and SSG Explained",
+        "author": "68dc3a5a25c768a2354cc34a",
+        "description": "Understanding server-side rendering and static site generation in Next.js.",
+        "thumbnail": "https://miro.medium.com/v2/1*_bJ2z2NRfTncHAv5UjUxwA.jpeg",
+        "tags": ["cats", "heelo", "murgin", "pen"]
+        "isFeatured": false,
+        "views": 0,
+        "_id": "68e80f8f3291cf537bac6f5e",
+        "createdAt": "2025-10-09T19:39:59.178Z",
+        "updatedAt": "2025-10-09T19:39:59.178Z"
+    },
+    ........
+    ]
+}
+```
+
+### 5./ DELETE A Blog Endpoints:
+
+api url: http://localhost:5000/api/v1/blog/{objectId}
+
+method: `DELETE`
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Blog deleted Successfully.",
+    "data": null
+}
+```
+
+---
