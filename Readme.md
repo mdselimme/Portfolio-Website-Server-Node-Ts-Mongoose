@@ -687,7 +687,26 @@ credentials: include
     "statusCode": 201,
     "success": true,
     "message": "Project Updated Successfully.",
-    "data": null
+    "data": {
+        "_id": "68e8696ddfe1dffedf0e71a4",
+        "user": "68dc3a5a25c768a2354cc34a",
+        "title": "E-Commerce Website",
+        "thumbnail": "https://example.com/thumbnails/ecommerce.png",
+        "description": "A full-stack e-commerce website with shopping cart and payment integration.",
+        "clientLiveLink": "https://ecommerce-client.vercel.app",
+        "serverLiveLink": "https://ecommerce-api.onrender.com",
+        "clientCodeLink": "https://github.com/username/ecommerce-client",
+        "serverCodeLink": "https://github.com/username/ecommerce-server",
+        "technologyUsed": [
+            "React",
+            "Node.js",
+            "Express",
+            "MongoDB",
+            "TailwindCSS"
+        ],
+        "createdAt": "2025-10-10T02:03:25.905Z",
+        "updatedAt": "2025-10-10T02:28:02.745Z"
+    }
 }
 ```
 
@@ -776,6 +795,63 @@ credentials: include
     "success": true,
     "message": "Project deleted Successfully.",
     "data": null
+}
+```
+
+---
+
+## Stats Api Endpoints.
+
+### 1./ Get All Stats Endpoints:
+
+api url: http://localhost:5000/api/v1/stats
+
+method: `GET`
+
+credentials: include
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Get All Stats Successfully.",
+    "data": {
+        "totalBlogs": 7,
+        "totalProjects": 4
+    }
+}
+```
+
+---
+
+## Error Found Demo Schema In Dev mode.
+
+**Response**
+
+```json
+{
+    "success": false,
+    "message": "Invalid MongoDb ObjectId. Pleas give a valid id.",
+    "errorSource": [],
+    "error": {
+        "stringValue": "\"NaN\"",
+        "valueType": "number",
+        "kind": "Number",
+        "value": null,
+        "path": "views",
+        "reason": {
+            "generatedMessage": true,
+            "code": "ERR_ASSERTION",
+            "actual": false,
+            "expected": true,
+            "operator": "=="
+        },
+        "name": "CastError",
+        "message": "Cast to Number failed for value \"NaN\" (type number) at path \"views\""
+    },
+    "stack": "CastError: Cast to Number failed for value \"NaN\" (type number) at path \"views\"\n    at SchemaNumber.cast (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\schema\\number.js:381:11)\n    at SchemaNumber.SchemaType.applySetters (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\schemaType.js:1258:12)\n    at SchemaNumber.castForQuery (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\schema\\number.js:450:16)\n    at castUpdateVal (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\helpers\\query\\castUpdate.js:628:19)\n    at walkUpdatePath (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\helpers\\query\\castUpdate.js:433:24)\n    at castUpdate (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\helpers\\query\\castUpdate.js:144:7)\n    at model.Query._castUpdate (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\query.js:4874:10)\n    at model.Query._findOneAndUpdate (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\query.js:3497:23)\n    at model.Query.exec (F:\\1.Web-Development\\3.Level-2-Course\\13.Next-Js\\next-js-portfolio-app-server-node-ts-mongoose\\node_modules\\mongoose\\lib\\query.js:4627:80)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)"
 }
 ```
 
