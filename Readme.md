@@ -388,6 +388,8 @@ api url: http://localhost:5000/api/v1/blog
 
 method: `POST`
 
+credentials: include
+
 **Blog Create Schema Model:**
 
 ```json
@@ -443,6 +445,8 @@ method: `POST`
 api url: http://localhost:5000/api/v1/blog/{objectId}
 
 method: `PATCH`
+
+credentials: include
 
 **Blog Update Schema Model:**
 
