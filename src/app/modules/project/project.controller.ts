@@ -48,6 +48,7 @@ const getAllProject = catchAsync(async (req: Request, res: Response) => {
 
 // get A Single Project
 const getAProject = catchAsync(async (req: Request, res: Response) => {
+
   const result = await ProjectServices.getAProject(req.params.id);
 
   sendResponse(res, {
@@ -60,6 +61,7 @@ const getAProject = catchAsync(async (req: Request, res: Response) => {
 
 // get A Single Project
 const deleteAProject = catchAsync(async (req: Request, res: Response) => {
+
   await ProjectServices.deleteAProject(req.params.id);
 
   sendResponse(res, {

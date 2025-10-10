@@ -30,6 +30,13 @@ const createAProject = async (
 
 // Update A Project
 const updateAProject = async (payload: Partial<IProject>, id: string) => {
+
+  const project = await Project.findById(id);
+
+  if (!project) {
+    throw new AppError(httpStatusCodes.BAD_REQUEST, "No Project found. Invalid Your ObjectId.")
+  }
+
   const result = await Project.findByIdAndUpdate(id, payload, {
     runValidators: true,
     new: true,
@@ -52,16 +59,28 @@ const getAllProject = async () => {
 
 // get A Single Project
 const getAProject = async (id: string) => {
+
   const result = await Project.findById(id).populate(
     "user",
     "name photo"
   );
+
+  if (!result) {
+    throw new AppError(httpStatusCodes.BAD_REQUEST, "No Project found. Invalid Your ObjectId.")
+  }
 
   return result;
 };
 
 // get A Single Project
 const deleteAProject = async (id: string) => {
+
+  const project = await Project.findById(id);
+
+  if (!project) {
+    throw new AppError(httpStatusCodes.BAD_REQUEST, "No Project found. Invalid Your ObjectId.")
+  }
+
   const result = await Project.findByIdAndDelete(id);
 
   return result;

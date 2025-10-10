@@ -180,7 +180,9 @@ USER_PHONE=01731023545
 ### 2./ User Update Endpoints:
 
 api url: http://localhost:5000/api/v1/user
+
 method: `PATCH`
+
 credentials: include
 
 **User Update Schema Model**
@@ -226,7 +228,9 @@ credentials: include
 ### 3./ User Get Me Endpoints:
 
 api url: http://localhost:5000/api/v1/user/me
+
 method: `GET`
+
 credentials: include
 
 **Response**
@@ -559,6 +563,8 @@ api url: http://localhost:5000/api/v1/blog/{objectId}
 
 method: `DELETE`
 
+credentials: include
+
 **Response**
 
 ```json
@@ -566,6 +572,209 @@ method: `DELETE`
     "statusCode": 200,
     "success": true,
     "message": "Blog deleted Successfully.",
+    "data": null
+}
+```
+
+---
+
+## Projects Api Endpoints.
+
+### 1./ Project Create Endpoints:
+
+api url: http://localhost:5000/api/v1/project
+
+method: `POST`
+
+credentials: include
+
+**Project Create Schema Model:**
+
+```json
+{
+  "title": string,
+  "thumbnail": string,
+  "description": string,
+  "technologyUsed": [sting],
+  "clientLiveLink": string, //(optional)
+  "serverLiveLink": string, //(optional)
+  "serverCodeLink": string, //(optional)
+  "clientCodeLink": string, //(optional)
+}
+```
+
+**Request Example Schema:**
+
+```json
+{
+    "title": "E-Commerce Website",
+    "thumbnail": "https://example.com/thumbnails/ecommerce.png",
+    "description": "A full-stack e-commerce website with shopping cart and payment integration.",
+    "clientLiveLink": "https://ecommerce-client.vercel.app",
+    "serverLiveLink": "https://ecommerce-api.onrender.com",
+    "serverCodeLink": "https://github.com/username/ecommerce-server",
+    "clientCodeLink": "https://github.com/username/ecommerce-client",
+    "technologyUsed": ["React", "Node.js", "Express", "MongoDB", "TailwindCSS"]
+  }
+```
+
+**Response**
+
+```json
+{
+    "statusCode": 201,
+    "success": true,
+    "message": "Project Created Successfully.",
+    "data": {
+        "user": "68dc3a5a25c768a2354cc34a",
+        "title": "E-Commerce Website",
+        "thumbnail": "https://example.com/thumbnails/ecommerce.png",
+        "description": "A full-stack e-commerce website with shopping cart and payment integration.",
+        "clientLiveLink": "https://ecommerce-client.vercel.app",
+        "serverLiveLink": "https://ecommerce-api.onrender.com",
+        "clientCodeLink": "https://github.com/username/ecommerce-client",
+        "serverCodeLink": "https://github.com/username/ecommerce-server",
+        "technologyUsed": ["React", "Node.js","Express","MongoDB","TailwindCSS"],
+        "_id": "68e8696ddfe1dffedf0e71a4",
+        "createdAt": "2025-10-10T02:03:25.905Z",
+        "updatedAt": "2025-10-10T02:03:25.905Z"
+    }
+}
+```
+
+### 2./ Project Update Endpoints:
+
+api url: http://localhost:5000/api/v1/project/{objectId}
+
+method: `PATCH`
+
+credentials: include
+
+**Project Update Schema Model:**
+
+```json
+{
+  "title": string,//(optional)
+  "thumbnail": string,//(optional)
+  "description": string,//(optional)
+  "technologyUsed": [sting],//(optional)
+  "clientLiveLink": string, //(optional)
+  "serverLiveLink": string, //(optional)
+  "serverCodeLink": string, //(optional)
+  "clientCodeLink": string, //(optional)
+}
+```
+
+**Request Example Schema:**
+
+```json
+ {
+  "title": "E-Commerce Website",
+  "thumbnail": "https://example.com/thumbnails/ecommerce.png",
+  "description": "A full-stack e-commerce website with shopping cart and payment integration.",
+  "clientLiveLink": "https://ecommerce-client.vercel.app",
+  "serverLiveLink": "https://ecommerce-api.onrender.com",
+  "clientCodeLink": "https://github.com/username/ecommerce-client",
+  "serverCodeLink": "https://github.com/username/ecommerce-server",
+  "technologyUsed": ["React", "Node.js","Express","MongoDB","TailwindCSS"],
+  }
+```
+
+**Response**
+
+```json
+{
+    "statusCode": 201,
+    "success": true,
+    "message": "Project Updated Successfully.",
+    "data": null
+}
+```
+
+### 3./ Get A Project Endpoints:
+
+api url: http://localhost:5000/api/v1/project/{objectId}
+
+method: `GET`
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Blog retrieved Successfully.",
+    "data":  "_id": "68e8696ddfe1dffedf0e71a4",
+        "user": {
+            "_id": "68dc3a5a25c768a2354cc34a",
+            "name": "MD. SELIM",
+            "photo": "https://i.ibb.co.com/Ld3HCkBP/team-6.jpg"
+        },
+        "title": "E-Commerce Website",
+        "thumbnail": "https://example.com/thumbnails/ecommerce.png",
+        "description": "A full-stack e-commerce website with shopping cart and payment integration.",
+        "clientLiveLink": "https://ecommerce-client.vercel.app",
+        "serverLiveLink": "https://ecommerce-api.onrender.com",
+        "clientCodeLink": "https://github.com/username/ecommerce-client",
+        "serverCodeLink": "https://github.com/username/ecommerce-server",
+        "technologyUsed": ["React", "Node.js","Express","MongoDB","TailwindCSS"],
+        "createdAt": "2025-10-10T02:03:25.905Z",
+        "updatedAt": "2025-10-10T02:03:25.905Z"
+}
+```
+
+### 4./ Get ALL Project Endpoints:
+
+api url: http://localhost:5000/api/v1/project
+
+method: `GET`
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Project retrieved Successfully.",
+    "data": [
+        {
+            "_id": "68e8696ddfe1dffedf0e71a4",
+            "user": {
+                "_id": "68dc3a5a25c768a2354cc34a",
+                "name": "MD. SELIM",
+                "photo": "https://i.ibb.co.com/Ld3HCkBP/team-6.jpg"
+            },
+            "title": "E-Commerce Website",
+            "thumbnail": "https://example.com/thumbnails/ecommerce.png",
+            "description": "A full-stack e-commerce website with shopping cart and payment integration.",
+            "clientLiveLink": "https://ecommerce-client.vercel.app",
+            "serverLiveLink": "https://ecommerce-api.onrender.com",
+            "clientCodeLink": "https://github.com/username/ecommerce-client",
+            "serverCodeLink": "https://github.com/username/ecommerce-server",
+            "technologyUsed": ["React", "Node.js","Express","MongoDB","TailwindCSS"],
+            "createdAt": "2025-10-10T02:03:25.905Z",
+            "updatedAt": "2025-10-10T02:03:25.905Z"
+        },
+        ........
+    ]
+}
+```
+
+### 5./ DELETE A Project Endpoints:
+
+api url: http://localhost:5000/api/v1/project/{objectId}
+
+method: `DELETE`
+
+credentials: include
+
+**Response**
+
+```json
+{
+    "statusCode": 200,
+    "success": true,
+    "message": "Project deleted Successfully.",
     "data": null
 }
 ```

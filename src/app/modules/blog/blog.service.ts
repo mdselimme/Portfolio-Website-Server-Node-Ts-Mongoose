@@ -27,6 +27,11 @@ const createABlog = async (payload: Partial<IBlog>, decodedToken: JwtPayload) =>
 // Update A Blog 
 const updateABlog = async (payload: Partial<IBlog>, id: string) => {
 
+    const blog = await Blog.findById(id);
+
+    if (!blog) {
+        throw new AppError(httpStatusCodes.BAD_REQUEST, "No Blog found. Invalid Your ObjectId.")
+    }
 
     const result = await Blog.findByIdAndUpdate(id, payload, { runValidators: true, new: true });
 
@@ -52,6 +57,10 @@ const getABlog = async (id: string) => {
 
         const blog = await Blog.findById(id);
 
+        if (!blog) {
+            throw new AppError(httpStatusCodes.BAD_REQUEST, "No Blog found. Invalid Your ObjectId.")
+        }
+
         const updateViews = { views: Number(blog?.views) + 1 };
 
         const findByIdAndUpdateViews = await Blog.findByIdAndUpdate(id, updateViews, { session, runValidators: true, new: true }).populate("author", "name email phone photo")
@@ -69,6 +78,12 @@ const getABlog = async (id: string) => {
 
 // get A Single Blog
 const deleteABlog = async (id: string) => {
+
+    const blog = await Blog.findById(id);
+
+    if (!blog) {
+        throw new AppError(httpStatusCodes.BAD_REQUEST, "No Blog found. Invalid Your ObjectId.")
+    }
 
     const result = await Blog.findByIdAndDelete(id);
 
