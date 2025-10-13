@@ -10,7 +10,7 @@
     "lint": "npx eslint ./src"
   },
   "keywords": [],
-  "author": "",
+  "author": "Md. Selim",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

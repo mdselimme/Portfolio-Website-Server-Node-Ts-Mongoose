@@ -13,7 +13,7 @@ export const setTokenInCookie = (res: Response, token: IToken) => {
             httpOnly: true,
             secure: true,
             sameSite: "none",
-            maxAge: 1000 * 60 * 60 * 24,
+            maxAge: 1000 * 60 * 60 * 24 * 2,
             path: "/"
         })
     }

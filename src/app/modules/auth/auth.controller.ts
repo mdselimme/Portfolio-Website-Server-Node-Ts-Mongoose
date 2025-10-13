@@ -55,7 +55,9 @@ const getNewAccessTokenFromRefreshToken = catchAsync(async (req: Request, res: R
     sendResponse(res, {
         success: true,
         message: "Access Token find Successfully.",
-        data: tokenInfo,
+        data: {
+            accessToken: tokenInfo
+        },
         statusCode: httpStatusCodes.OK
     });
 })
