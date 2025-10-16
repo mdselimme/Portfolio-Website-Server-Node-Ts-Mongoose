@@ -16,6 +16,8 @@ interface IEnvVars {
     USER_PASSWORD: string,
     USER_PHONE: string,
     NEXT_AUTH_SECRET: string,
+    CLIENT_URL_LOCAL: string,
+    CLIENT_URL_PRODUCTION: string,
 };
 
 
@@ -32,6 +34,8 @@ const requiredEnvironmentVariables = (): IEnvVars => {
         "USER_PASSWORD",
         "USER_PHONE",
         "NEXT_AUTH_SECRET",
+        "CLIENT_URL_LOCAL",
+        "CLIENT_URL_PRODUCTION",
     ];
 
     requiredVar.forEach((key) => {
@@ -54,6 +58,8 @@ const requiredEnvironmentVariables = (): IEnvVars => {
         USER_EMAIL: process.env.USER_EMAIL as string,
         USER_PASSWORD: process.env.USER_PASSWORD as string,
         USER_PHONE: process.env.USER_PHONE as string,
+        CLIENT_URL_LOCAL: process.env.CLIENT_URL_LOCAL as string,
+        CLIENT_URL_PRODUCTION: process.env.CLIENT_URL_PRODUCTION as string,
     };
 };
 

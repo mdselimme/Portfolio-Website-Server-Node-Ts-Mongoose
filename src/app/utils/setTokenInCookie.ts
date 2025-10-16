@@ -14,7 +14,6 @@ export const setTokenInCookie = (res: Response, token: IToken) => {
             secure: true,
             sameSite: "none",
             maxAge: 1000 * 60 * 60 * 24 * 2,
-            path: "/"
         })
     }
     if (token.refreshToken) {
