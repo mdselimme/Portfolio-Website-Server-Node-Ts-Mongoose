@@ -50,7 +50,7 @@ const getNewAccessTokenFromRefreshToken = catchAsync(async (req: Request, res: R
 
     const tokenInfo = await newAccessTokenFromRefreshToken(refreshToken);
 
-    setTokenInCookie(res, { accessToken: tokenInfo });
+    // setTokenInCookie(res, { accessToken: tokenInfo });
 
     sendResponse(res, {
         success: true,

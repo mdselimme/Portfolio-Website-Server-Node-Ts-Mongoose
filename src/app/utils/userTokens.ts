@@ -26,6 +26,7 @@ export const createUserJwtToken = (user: Partial<IUser>) => {
 
 // Generate A new Access Token If access token expired 
 export const newAccessTokenFromRefreshToken = async (refreshToken: string) => {
+
     const verifiedRefreshToken = verifyJwtToken(refreshToken, envVariable.JWT_REFRESH_SECRET) as JwtPayload;
 
     const isUserExist = await User.findOne({ email: verifiedRefreshToken.email });

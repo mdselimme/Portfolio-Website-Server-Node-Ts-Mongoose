@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [`${envVariable.CLIENT_URL_LOCAL}`, `${envVariable.CLIENT_URL_PRODUCTION}`],
+    origin: envVariable.CLIENT_URL_PRODUCTION,
     credentials: true,
   })
 );
