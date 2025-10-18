@@ -2,7 +2,6 @@ import { Request, Response } from "express"
 import { sendResponse } from "../../utils/sendResponse";
 import { AuthServices } from "./auth.services";
 import httpStatusCodes from "http-status-codes";
-import { setTokenInCookie } from "../../utils/setTokenInCookie";
 import { newAccessTokenFromRefreshToken } from "../../utils/userTokens";
 import { JwtPayload } from "jsonwebtoken";
 import { catchAsync } from "../../utils/catchAsync";
@@ -13,8 +12,6 @@ import AppError from "../../errorHelpers/AppError";
 const AuthLogIn = catchAsync(async (req: Request, res: Response) => {
 
     const result = await AuthServices.AuthLogIn(req.body);
-
-    setTokenInCookie(res, { accessToken: result.accessToken, refreshToken: result.refreshToken });
 
     sendResponse(res, {
         success: true,
@@ -49,8 +46,6 @@ const getNewAccessTokenFromRefreshToken = catchAsync(async (req: Request, res: R
     };
 
     const tokenInfo = await newAccessTokenFromRefreshToken(refreshToken);
-
-    // setTokenInCookie(res, { accessToken: tokenInfo });
 
     sendResponse(res, {
         success: true,
