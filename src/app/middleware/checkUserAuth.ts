@@ -9,7 +9,7 @@ import { verifyJwtToken } from "../utils/jwtTokenGenerate";
 
 export const checkAuth = (...authRoles: string[]) => async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const accessToken = req.headers.authorization || req.cookies.accessToken;
+        const accessToken = req.headers.authorization || req.cookies.accessToken || req.cookies["next-auth.session-token"];
         // if access token not found 
         if (!accessToken) {
             throw new AppError(httpStatusCodes.BAD_GATEWAY, "No token found! Please give token.");
