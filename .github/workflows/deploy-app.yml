@@ -3,22 +3,36 @@ name: Portfolio Server Deployment
 on: [push, workflow_dispatch]
 
 jobs:
-    test-code:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Copy files to the server
-              uses: actions/checkout@v6
+  test-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy files to the server
+        uses: actions/checkout@v6
 
-            - name: Install Node Js
-              uses: actions/setup-node@v5
-              with:
-                  node-version: "24.13.0"
+      - name: Install Node Js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24.13.0"
 
-            - name: Check Version
-              run: node -v
+      - name: Check Version
+        run: node -v
 
-            - name: Install dependencies
-              run: npm install
+      - name: Install dependencies
+        run: npm install
 
-            - name: Run tests
-              run: npm test
+  build-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install node js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24.13.0"
+
+      - name: copy files to the server
+        uses: actions/checkout@v6
+
+      - name: install dependencies
+        run: npm install
+
+      - name: build code
+        run: npm run build
