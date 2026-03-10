@@ -1,6 +1,9 @@
 name: Portfolio Server Deployment
 
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   test-code:
