@@ -12,6 +12,9 @@ jobs:
                   echo "Contents of the directory:"
                   ls -la
                   echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+                  git -v
+                  node -v
+                  npm -v
             #   uses: actions/checkout@v2
 
             # - name: Set up Node.js
