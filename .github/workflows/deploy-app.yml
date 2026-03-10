@@ -1,0 +1,26 @@
+name: Portfolio Server Deployment
+
+on: [push, workflow_dispatch]
+
+jobs:
+    test-code:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Working Directory
+              run: |
+                  echo "Current working directory: $(pwd)"
+                  echo "Contents of the directory:"
+                  ls -la
+                  echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+            #   uses: actions/checkout@v2
+
+            # - name: Set up Node.js
+            #   uses: actions/setup-node@v2
+            #   with:
+            #       node-version: latest
+
+            # - name: Install dependencies
+            #   run: npm install
+
+            # - name: Run tests
+            #   run: npm test
